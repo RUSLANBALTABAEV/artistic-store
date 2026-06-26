@@ -1,0 +1,124 @@
+// apps/cms/src/api/content-types/product/schema.json
+
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": "Товар в каталоге"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 255,
+      "configurable": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext",
+      "configurable": false
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0,
+      "configurable": false
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": ["USD", "EUR", "RUB", "GBP"],
+      "default": "USD",
+      "configurable": false
+    },
+    "discount_price": {
+      "type": "decimal",
+      "min": 0,
+      "configurable": false
+    },
+    "sku": {
+      "type": "string",
+      "unique": true,
+      "configurable": false
+    },
+    "stock": {
+      "type": "integer",
+      "default": 0,
+      "configurable": false
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["paintings", "sculptures", "prints", "photography", "digital"],
+      "required": true,
+      "configurable": false
+    },
+    "artist": {
+      "type": "string",
+      "required": true,
+      "configurable": false
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "configurable": false
+    },
+    "featured_image": {
+      "type": "media",
+      "configurable": false
+    },
+    "dimensions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "product.dimensions",
+      "configurable": false
+    },
+    "materials": {
+      "type": "string",
+      "configurable": false
+    },
+    "year_created": {
+      "type": "integer",
+      "configurable": false
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "is_limited_edition": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "related_products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "targetModel": "product",
+      "configurable": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "configurable": false
+    },
+    "locale": {
+      "type": "string",
+      "configurable": false
+    }
+  }
+}

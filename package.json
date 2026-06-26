@@ -1,0 +1,29 @@
+{
+  "name": "artistic-store",
+  "version": "1.0.0",
+  "description": "Artistic Store - Premium Beauty Products E-commerce Platform",
+  "private": true,
+  "packageManager": "pnpm@11.8.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r --parallel run build",
+    "start": "pnpm -r --parallel run start",
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint",
+    "approve-builds": "pnpm approve-builds",
+    "type-check": "pnpm -r run type-check",
+    "format": "pnpm -r run format"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

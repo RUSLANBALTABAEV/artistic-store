@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.example
+/apps/backend/node_modules/
+/apps/backend/.env
+/apps/backend/.env.example
+/apps/cms/node_modules/
+/apps/cms/.env
+/apps/cms/.env.example
+/apps/cms/build/
+/apps/frontend/.next
+/apps/cms/node_modules/
+/apps/cms/.env
+/apps/cms/.env.example

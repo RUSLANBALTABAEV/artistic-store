@@ -1,0 +1,109 @@
+// apps/cms/src/api/content-types/order/schema.json
+
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": "Заказ в системе"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "order_number": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "configurable": false
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "configurable": false
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "order.line-item",
+      "required": true,
+      "configurable": false
+    },
+    "total_amount": {
+      "type": "decimal",
+      "required": true,
+      "min": 0,
+      "configurable": false
+    },
+    "shipping_cost": {
+      "type": "decimal",
+      "default": 0,
+      "configurable": false
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": ["USD", "EUR", "RUB", "GBP"],
+      "required": true,
+      "configurable": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "processing", "shipped", "delivered", "cancelled"],
+      "default": "pending",
+      "configurable": false
+    },
+    "payment_status": {
+      "type": "enumeration",
+      "enum": ["unpaid", "paid", "refunded", "failed"],
+      "default": "unpaid",
+      "configurable": false
+    },
+    "payment_method": {
+      "type": "string",
+      "configurable": false
+    },
+    "shipping_address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.address",
+      "required": true,
+      "configurable": false
+    },
+    "billing_address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.address",
+      "configurable": false
+    },
+    "notes": {
+      "type": "text",
+      "configurable": false
+    },
+    "tracking_number": {
+      "type": "string",
+      "unique": true,
+      "configurable": false
+    },
+    "shipped_date": {
+      "type": "datetime",
+      "configurable": false
+    },
+    "delivered_date": {
+      "type": "datetime",
+      "configurable": false
+    },
+    "cancellation_reason": {
+      "type": "text",
+      "configurable": false
+    },
+    "metadata": {
+      "type": "json",
+      "configurable": false
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "strapi-plugin-email-notifications",
+  "version": "1.0.0",
+  "description": "Email notifications plugin for Strapi",
+  "strapi": {
+    "name": "email-notifications",
+    "description": "Send email notifications from Strapi",
+    "kind": "plugin"
+  },
+  "main": "./strapi-server.js",
+  "exports": {
+    ".": {
+      "node": "./strapi-server.js",
+      "require": "./strapi-server.js",
+      "import": "./strapi-server.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "strapi-server.js"
+  ]
+}
